@@ -1,0 +1,58 @@
+<!doctype HTML>
+<html>
+	<head>
+		<title>Inizio form validation</title>
+		<link rel='stylesheet' href='css/style.css' />
+		<script src="./js/form4_v2.js"></script>
+		<script src="./js/storage.js"></script>
+	</head>
+	<body>
+		<h1>Primo esempio di validazione</h1>
+		<form id='formVeicolo'>
+			<label id='lbAssicurazione' for='ipAssicurazione'> Assicurazione
+				<input id='ipAssicurazione' name='ipAssicurazione' pattern='[0-9]{5}'
+				placeholder="Numero Assicurazione"
+				required onchange="stupidSample(this);" />
+			</label>
+
+			<label id='lbModello' for='ipModello'>Modello Veicolo
+				<input id='ipModello' name='ipModello' placeholder="Modello Veicolo"
+				maxlength="4"/>
+			</label>
+
+			<label> targa veicolo
+				<input type='text'
+				name="TargaVeicolo"
+				id='ipTarga'
+				pattern="[A-Z]{2}\-[0-9]{3}\-[A-Z]{2}"
+				placeholder="AA-000-ZZ"
+				title="2 lettere â€“ 3 numeri â€“ 2 lettere. NB.  tutte lettere maiuscole" >
+			</label>
+
+			<label for='avanzamento'> Meter 
+				<progress id='avanzamento' value="10" ></progress> 
+			</label>
+
+			<div id='comandi' onmouseover="stupidSample(this);">
+				<input type="button" value='salva in sessione' 
+						onclick="onClickButtonSaveToSession();" />
+				<input type="button" value='salva in modo persistente'
+							onclick="onClickButtonSaveToLocal();" />
+				<br />
+				<input type="button" value='ricarica da sessione' onclick="loadFromSession()" />
+				<input type="button" value='ricarica da locale' onclick="loadFromLocal()" />
+				<input type="reset" value='pulisci' />
+			</div>
+			<div id='sessionStorageStatus'>
+				<h1>Session Storage</h1>
+				<div id='sessionStorageStatusContent'>
+				</div>
+			</div>
+			<div id='localStorageStatus'>
+				<h1>Local Storage</h1>
+				<div id='localStorageStatusContent'>
+				</div>
+			</div>
+		</form>
+	</body>
+</html>
